@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
     "hapi": "^18.1.0",
     "knex": "^0.21.1",
     "objection": "^2.2.1",

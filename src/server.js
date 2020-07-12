@@ -1,25 +1,23 @@
-'use strict';
-import Hapi from '@hapi/hapi';
-import routes from './routes';
+"use strict";
+import Hapi from "@hapi/hapi";
+import routes from "./routes";
 
 const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
+  port: 3000,
+  host: "localhost",
 });
 
 server.route(routes);
 
 const init = async () => {
+  try {
+    await server.start();
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
 
-    try {
-        await server.start();
-      }
-      catch (err) {
-        console.log(err);
-        process.exit(1);
-      }
-    
-      console.log('Server running at:', server.info.uri);
+  console.log("Server running at:", server.info.uri);
 };
 
 init();

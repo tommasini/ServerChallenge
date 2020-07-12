@@ -9,7 +9,7 @@ module.exports = {
       database: "lisgo"
     },
     migrations: {
-      directory: "./src/database",
+      directory: "./src/database/migrations",
       tableName: "knex_migrations",
     },
   },
