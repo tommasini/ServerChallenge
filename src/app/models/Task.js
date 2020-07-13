@@ -12,7 +12,7 @@ class Task extends Model {
   static get joiSchema() {
     return Joi.object({
       id: Joi.number().integer(),
-      state: Joi.boolean,
+      state: Joi.boolean(),
       description: Joi.string(),
       created_at: Joi.date(),
     });

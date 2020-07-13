@@ -13,4 +13,9 @@ module.exports = [
     path: "/task",
     handler: TaskController.store,
   },
+  {
+    method: "PUT",
+    path: "/task/{id}",
+    handler: TaskController.update,
+  },
 ];
