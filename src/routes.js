@@ -18,4 +18,9 @@ module.exports = [
     path: "/task/{id}",
     handler: TaskController.update,
   },
+  {
+    method: "GET",
+    path: "/task",
+    handler: TaskController.index,
+  },
 ];
