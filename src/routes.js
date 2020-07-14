@@ -22,5 +22,10 @@ module.exports = [
     method: "GET",
     path: "/task",
     handler: TaskController.index,
+  }, 
+  {
+    method: "DELETE",
+    path: "/task/{id}",
+    handler: TaskController.delete,
   },
 ];

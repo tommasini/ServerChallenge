@@ -114,6 +114,19 @@ class TaskCrontroller {
       return tasks;
     }
   }
+
+  async delete(req, res){
+    const id = req.params.id;
+    const task = await Task.query().findById(id)
+
+    if(!task){
+      return Boom.notFound("That task does not exist");
+    }
+
+    const taskDeleted = await Task.query().deleteById(id);
+
+    return task;
+  }
 }
 
 export default new TaskCrontroller();
