@@ -9,12 +9,12 @@ module.exports = [
     }
   },
   {
-    method: "POST",
+    method: "PUT",
     path: "/task",
     handler: TaskController.store,
   },
   {
-    method: "PUT",
+    method: "PATCH",
     path: "/task/{id}",
     handler: TaskController.update,
   },
