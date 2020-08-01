@@ -19,8 +19,9 @@ const init = async () => {
       }
     };
 
-    await server.register({
-      plugin: require("hapi-cors"),
+    await server.register([require('vision'), require('inert'), require('lout'),{
+      plugin: 
+        require("hapi-cors"),
       options: {
         origins: ["*"],
         allowCredentials: "true",
@@ -30,7 +31,7 @@ const init = async () => {
         headers: ["Accept", "Content-Type", "Authorization"], // add your header params
       },
       checkOrigin: true,
-    });
+    }]);
 
     server.route(routes);
     await server.start();
