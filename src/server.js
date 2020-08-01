@@ -7,17 +7,32 @@ const server = Hapi.server({
   host: "localhost",
 });
 
-server.route(routes);
-
 const init = async () => {
   try {
-    await server.register({
-      plugin: require('hapi-cors'),
-      options: {
-          origins: ['http://localhost:3000']
+    const checkOrigin = (origin) => {
+      console.log(origin);
+      return false;
+      if (origin === "http://localhost:3000") {
+        return true;
+      } else {
+        return false;
       }
-  });
-  
+    };
+
+    await server.register({
+      plugin: require("hapi-cors"),
+      options: {
+        origins: ["*"],
+        allowCredentials: "true",
+        exposeHeaders: ["content-type", "content-length"],
+        maxAge: 600,
+        methods: ["GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS"],
+        headers: ["Accept", "Content-Type", "Authorization"], // add your header params
+      },
+      checkOrigin: true,
+    });
+
+    server.route(routes);
     await server.start();
   } catch (err) {
     console.log(err);
